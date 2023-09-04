@@ -3,7 +3,7 @@ import torchaudio
 
 from network import Network
 from dataset import UrbanSoundDataset
-from train import AUDIO_DIR, ANNOTATION_FILE, SAMPLE_RATE, NUM_SAMPLES
+from scripts.train import AUDIO_DIR, ANNOTATION_FILE, SAMPLE_RATE, NUM_SAMPLES
 
 class_mapping = [
     "air_conditioner",
@@ -41,5 +41,3 @@ if __name__ == "__main__":
     usd = UrbanSoundDataset(
         ANNOTATION_FILE, AUDIO_DIR, mel_spectogram, SAMPLE_RATE, NUM_SAMPLES, "cpu"
     )
-
-    input, target = validation_data[0][0]
