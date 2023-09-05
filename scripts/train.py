@@ -10,8 +10,11 @@ BATCH_SIZE = 128
 EPOCHS = 10
 LR = 0.001
 
-ANNOTATION_FILE = ""
-AUDIO_DIR = ""
+# ANNOTATION_FILE = ""
+# AUDIO_DIR = ""
+ANNOTATION_FILE = "/home/alihantadal/Documents/Projects/sound_classifier/data/metadata/UrbanSound8K.csv"
+AUDIO_DIR = "/home/alihantadal/Documents/Projects/sound_classifier/data/audio"
+
 SAMPLE_RATE = 22050
 NUM_SAMPLES = 22050
 
@@ -69,6 +72,8 @@ if __name__ == "__main__":
 
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(cnn.parameters(), lr=LR)
+
+    print(train_dataloader)
 
     train(cnn, train_dataloader, loss_fn, optimizer, device, EPOCHS)
 

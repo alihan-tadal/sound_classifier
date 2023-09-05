@@ -49,8 +49,7 @@ class UrbanSoundDataset(Dataset):
             num_missing = self.num_samples - length_signal
             padding = (0, num_missing)  # 0 for left, num_missing for right padding.
             signal = torch.nn.functional.pad(signal, padding)
-
-        pass
+        return signal
 
     def _resample_if_necessary(self, signal, sample_rate):
         if sample_rate != self.target_sample_rate:
@@ -78,8 +77,8 @@ class UrbanSoundDataset(Dataset):
 
 
 if "__name__" == "__main__":
-    ANNOTATION_FILE = ""
-    AUDIO_DIR = ""
+    ANNOTATION_FILE = "../data/metadata/UrbanSound8K.csv"
+    AUDIO_DIR = "../data/audio"
     SAMPLE_RATE = 22050
     NUM_SAMPLES = 22050
 
@@ -95,3 +94,5 @@ if "__name__" == "__main__":
     usd = UrbanSoundDataset(
         ANNOTATION_FILE, AUDIO_DIR, mel_spectogram, SAMPLE_RATE, NUM_SAMPLES, device
     )
+
+    
